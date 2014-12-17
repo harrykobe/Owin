@@ -12,6 +12,7 @@ using Microsoft.Owin.Cors;
 using Microsoft.Owin.FileSystems;
 using Owin;
 using Microsoft.AspNet.SignalR;
+using TestOwin.Config;
 
 namespace TestOwin
 {
@@ -23,12 +24,9 @@ namespace TestOwin
         {
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
+            //config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            RouteConfig.RegisterRoutes(config.Routes);
 
 
             appBuilder.Map("/signalr", map =>

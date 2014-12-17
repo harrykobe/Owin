@@ -9,6 +9,7 @@ namespace TestOwin
 {
     public class ValuesController : ApiController
     {
+        [Route("api/shit")]
         // GET api/values 
         public IEnumerable<string> Get()
         {
