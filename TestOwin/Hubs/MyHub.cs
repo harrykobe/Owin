@@ -6,7 +6,7 @@ namespace TestOwin
     {
         public void Send(string message)
         {
-            Clients.All.addMessage(message);
+            Clients.All.addMessage(message); //
         }
     }
 }
