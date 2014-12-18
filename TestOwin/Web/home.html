@@ -13,6 +13,7 @@
             <textarea id="messagesText" rows="20" style="width:100%"></textarea>
         </div>
         <div>
+            <textarea id="newid" rows="3"></textarea>
             <textarea id="newMessage" rows="3"></textarea>
             <button id="sendMessage">Send</button>
         </div>
@@ -21,6 +22,7 @@
         var hub = $.connection.myHub,
         $msgText = $("#messagesText"),
         $newMessage = $("#newMessage");
+        $newId = $("#newid");
 
 
         hub.client.addMessage = function (message) {
@@ -31,6 +33,7 @@
         $.connection.hub.start().done(function () {
             $(document).on('click', '#sendMessage', function () {
                 hub.server.send($newMessage.val());
+                hub.server.sendChatMessage($newId.val(), $newMessage.val());
             });
         });
     </script>
