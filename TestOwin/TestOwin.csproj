@@ -63,6 +63,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.StaticFiles">
       <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.0.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
     </Reference>
@@ -101,6 +104,8 @@
   <ItemGroup>
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Hubs\ConnectionMapping.cs" />
+    <Compile Include="Hubs\CustomUserIdProvider.cs" />
+    <Compile Include="Hubs\ErrorHandlingPipelineModule.cs" />
     <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
