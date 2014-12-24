@@ -43,15 +43,16 @@ namespace TestOwin
 
             //配置Hub出错时的处理Handling
             GlobalHost.HubPipeline.AddModule(new ErrorHandlingPipelineModule());
-            appBuilder.MapSignalR();
+            //appBuilder.MapSignalR();
 
             //设置跨域并启动signalR功能
-            //appBuilder.Map("/signalr", map =>
-            //{
-            //    map.UseCors(CorsOptions.AllowAll);
-            //    var hubConfiguration = new HubConfiguration { };
-            //    map.RunSignalR(hubConfiguration);
-            //});
+            appBuilder.Map("/signalr", map =>
+            {
+                map.UseCors(CorsOptions.AllowAll);
+                var hubConfiguration = new HubConfiguration { };
+                hubConfiguration.EnableDetailedErrors = true;
+                map.MapSignalR(hubConfiguration);
+            });
 
             //创建Http配置文件
             var config = new HttpConfiguration();
