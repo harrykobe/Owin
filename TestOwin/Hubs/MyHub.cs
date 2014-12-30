@@ -66,7 +66,7 @@ namespace TestOwin.Hubs
 
         public void TriggerError()
         {
-            throw new HubException("Dummy error");
+            throw new HubException("Dummy error", new { user = "Me", message = "Fuck" });
         }
 
         public void JoinGroup(String groupName)

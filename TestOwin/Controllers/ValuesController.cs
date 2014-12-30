@@ -9,10 +9,11 @@ namespace TestOwin
 {
     public class ValuesController : ApiController
     {
-        [Route("api/shit")]
+        //[Route("api/shit")]
         // GET api/values 
         public IEnumerable<string> Get()
         {
+            throw new Exception("Dummy error");
             return new string[] { "value1", "value2" };
         }
 

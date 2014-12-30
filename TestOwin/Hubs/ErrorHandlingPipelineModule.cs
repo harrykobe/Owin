@@ -10,8 +10,10 @@ namespace TestOwin.Hubs
 {
     public class ErrorHandlingPipelineModule : HubPipelineModule
     {
+
         protected override void OnIncomingError(ExceptionContext exceptionContext, IHubIncomingInvokerContext invokerContext)
         {
+            Console.WriteLine("Fuck the bitch!");
             Debug.WriteLine("=> Exception " + exceptionContext.Error.Message);
             if (exceptionContext.Error.InnerException != null)
             {

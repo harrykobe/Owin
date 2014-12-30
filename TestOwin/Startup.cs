@@ -14,6 +14,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using Microsoft.AspNet.SignalR;
 using TestOwin.Config;
+using TestOwin.Helper;
 using TestOwin.Hubs;
 
 namespace TestOwin
@@ -49,8 +50,7 @@ namespace TestOwin
             appBuilder.Map("/signalr", map =>
             {
                 map.UseCors(CorsOptions.AllowAll);
-                var hubConfiguration = new HubConfiguration { };
-                hubConfiguration.EnableDetailedErrors = true;
+                var hubConfiguration = new HubConfiguration();
                 map.MapSignalR(hubConfiguration);
             });
 
@@ -59,11 +59,13 @@ namespace TestOwin
 
             //配置http路由
             config.MapHttpAttributeRoutes();
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Never;
             RouteConfig.RegisterRoutes(config.Routes);
 
             //应用Http配置
+            appBuilder.Use(typeof(LoggingMiddleware));
+            appBuilder.UseNancy();
             appBuilder.UseWebApi(config);
-
         }
     }
 }
